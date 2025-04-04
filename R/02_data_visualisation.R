@@ -27,7 +27,7 @@ events <- data.frame(time = c(443.07, 359.3, 251.9, 201.36, 184.2, 56),
                      text = c("LOME", "D/C", "P/T", "T/J", "TOAE", "PETM"),
                      text_pos = c(443.07, 359.3, 251.9, 206.36, 179.2, 56))
 # Define colours
-cols <- c("#e59c2d", "#aad3cb", "#1a95b4", "#9e9ac8")
+cols <- c("#e59c2d", "#aad3cb", "#1a95b4", "#bcbddc")
 # Set levels
 reef$photic <- factor(x = reef$photic, levels = c("Brown mesophotic", 
                                                   "Euphotic", 
