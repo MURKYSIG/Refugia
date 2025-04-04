@@ -1,22 +1,22 @@
 # Header ----------------------------------------------------------------
 # Project: Refugia
 # File name: run_workflow.R
-# Last updated: 2025-03-27
-# Author: Lewis A. Jones
-# Email: LewisA.Jones@outlook.com
-# Repository: https://github.com/LewisAJones/Refugia
+# Last updated: 2025-04-04
+# Author: Danijela Dimitrijevic; Lewis A. Jones
+# Email: danijela.dimitrijevic@fau.de; LewisA.Jones@outlook.com
+# Repository: https://github.com/MURKYSIG/Refugia
 
 # Source files ----------------------------------------------------------
 # Data preparation
-source("R/01_data_preparation.R")
+source("R/01a_data_preparation_reefs.R")
 # Remove environment
 rm(list = ls())
 # Data analyses
-source("R/02_data_analyses.R")
+source("R/01b_data_preparation_corals.R")
 # Remove environment
 rm(list = ls())
 # Data visualisation
-source("R/03_data_visualisation.R")
+source("R/02_data_visualisation.R")
 # Remove environment
 rm(list = ls())
 
