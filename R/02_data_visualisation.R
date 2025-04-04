@@ -49,7 +49,8 @@ reef_counts <- ggplot() +
   geom_bar(data = reef, aes(x = mid_ma, y = n, fill = photic),
            position = "stack", stat = "identity", colour = "black", 
            width = reef$duration_myr, linewidth = 0.25) +
-  geom_label(data = events, aes(x = text_pos, y = (max(reef$n)), label = text), 
+  geom_label(data = events, aes(x = text_pos, y = Inf, label = text), 
+             vjust = 1.5,
              fill = "white", size = 2.75) +
   scale_fill_manual(values = cols) +
   scale_x_reverse(limits = c(485.4000, 0)) +
@@ -91,7 +92,8 @@ coll_counts <- ggplot() +
   geom_bar(data = coll, aes(x = mid_ma, y = n, fill = photic),
            position = "stack", stat = "identity", colour = "black", 
            width = coll$duration_myr, linewidth = 0.25) +
-  geom_label(data = events, aes(x = text_pos, y = (max(coll$n)), label = text), 
+  geom_label(data = events, aes(x = text_pos, y = Inf, label = text), 
+             vjust = 1.5,
              fill = "white", size = 2.75) +
   scale_fill_manual(values = cols) +
   scale_x_reverse(limits = c(485.4000, 0)) +
