@@ -20,6 +20,8 @@ periods <- subset(periods, max_age <= 485.4000)
 reef <- read.csv("data/reef_counts.csv")
 # Load collection counts
 coll <- read.csv("data/collection_counts.csv")
+# Load genus counts
+genus <- read.csv("data/genus_counts.csv")
 
 # Setup plot data -------------------------------------------------------
 # Define events for plotting
@@ -37,8 +39,12 @@ coll$photic <- factor(x = coll$photic, levels = c("Brown mesophotic",
                                                   "Euphotic", 
                                                   "Blue mesophotic",
                                                   "Unknown"))
+genus$photic <- factor(x = genus$photic, levels = c("Brown mesophotic", 
+                                                    "Euphotic", 
+                                                    "Blue mesophotic",
+                                                    "Unknown"))
 
-# Plot data -------------------------------------------------------------
+# Reef plots -------------------------------------------------------------
 # Create counts plot
 reef_counts <- ggplot() +
   geom_rect(data = periods, 
@@ -55,7 +61,7 @@ reef_counts <- ggplot() +
   scale_fill_manual(values = cols) +
   scale_x_reverse(limits = c(485.4000, 0)) +
   ylab("Number of reef sites") + 
-  xlab("") +
+  xlab("Time (Ma)") +
   theme_bw() +
   theme(legend.position = "bottom",
         legend.title = element_blank(),
@@ -82,6 +88,9 @@ reef_prop <- ggplot() +
         panel.grid = element_blank()) +
   coord_geo(height = unit(1.25, "line"), fill = "grey80", lab_color = "black")
 
+
+# Collection plots ------------------------------------------------------
+
 # Create counts plot
 coll_counts <- ggplot() +
   geom_rect(data = periods, 
@@ -98,7 +107,7 @@ coll_counts <- ggplot() +
   scale_fill_manual(values = cols) +
   scale_x_reverse(limits = c(485.4000, 0)) +
   ylab("Number of collections") + 
-  xlab("") +
+  xlab("Time (Ma)") +
   theme_bw() +
   theme(legend.position = "bottom",
         legend.title = element_blank(),
@@ -126,16 +135,41 @@ coll_prop <- ggplot() +
   coord_geo(height = unit(1.25, "line"), fill = "grey80", lab_color = "black")
 
 
-# Arrange plots
+# Diversity plot --------------------------------------------------------
+
+div <- ggplot() +
+  geom_rect(data = periods, 
+            aes(xmin = max_age, xmax = min_age, ymin = -Inf, ymax = Inf),
+            fill = rep(c("grey95", "white"), length.out = nrow(periods))) +
+  geom_vline(data = events, aes(xintercept = time), 
+             linetype = 2, colour = "grey80") +
+  geom_bar(data = genus, aes(x = mid_ma, y = genus_counts, fill = photic),
+           position = "stack", stat = "identity", colour = "black", 
+           width = coll$duration_myr, linewidth = 0.25) +
+  geom_label(data = events, aes(x = text_pos, y = Inf, label = text), 
+             vjust = 1.5,
+             fill = "white", size = 2.75) +
+  scale_fill_manual(values = cols) +
+  scale_x_reverse(limits = c(485.4000, 0)) +
+  ylab("Number of genera") + 
+  xlab("Time (Ma)") +
+  theme_bw() +
+  theme(legend.position = "bottom",
+        legend.title = element_blank(),
+        panel.grid = element_blank()) +
+  coord_geo(height = unit(1.25, "line"), fill = "grey80", lab_color = "black")
+
+# Arrange plots ---------------------------------------------------------
 p1 <- ggarrange(reef_counts, reef_prop, labels = c("A", "C"),
-                nrow = 2, ncol = 1, align = "hv", legend = "bottom", 
+                nrow = 2, ncol = 1, align = "hv", legend = "none", 
                 common.legend = TRUE)
 p2 <- ggarrange(coll_counts, coll_prop, labels = c("B", "D"), 
-                nrow = 2, ncol = 1, align = "hv", legend = "bottom", 
-                common.legend = TRUE)
+                nrow = 2, ncol = 1, align = "hv", legend = "none")
 # Plot
 p <- ggarrange(p1, p2)
+div <- ggarrange(div, labels = "E")
+p <- ggarrange(p, div, nrow = 2, align = "hv", heights = c(1.75, 1.25))
 p
 # Save
 ggsave("figures/counts.png", plot = p, 
-       dpi = 300, width = 350, height = 200, units = "mm", bg = "white")
+       dpi = 300, width = 300, height = 300, units = "mm", bg = "white")

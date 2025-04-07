@@ -8,6 +8,8 @@
 
 # Load libraries --------------------------------------------------------
 library(palaeoverse)
+library(dplyr)
+library(stringr)
 library(divDyn)
 
 # Load data -------------------------------------------------------------
@@ -16,6 +18,11 @@ corals <- read.csv("data/raw/pbdb_data.csv", skip = 21)
 # Load time bins
 bins <- read.csv("data/time_bins.csv")
 
+# Data cleaning ---------------------------------------------------------
+# Extract genus (genus column contains instances of NO_GENUS_SPECIFIED)
+corals$genus <- word(corals$accepted_name, 1)
+corals$accepted_rank[which(corals$accepted_rank == "subgenus")] <- "genus"
+
 # Data filtering --------------------------------------------------------
 # Which corals are colonial? Extract occurrence numbers
 colonial <- corals$occurrence_no[grepl(pattern = "colonial", x = corals$life_habit)]
@@ -23,13 +30,15 @@ colonial <- corals$occurrence_no[grepl(pattern = "colonial", x = corals$life_hab
 photosymbiotic <- corals$occurrence_no[grepl(pattern = "photosymbiotic", x = corals$diet)]
 # Get unique occurrence numbers
 occ_no <- unique(c(colonial, photosymbiotic))
-# Retain colonial/photosymbiotic corals
+# Which occurrences do collections belong to?
+coll_no <- corals %>%
+  filter(occurrence_no %in% occ_no) %>%
+  select(collection_no) %>%
+  distinct() %>%
+  .$collection_no
+# Retain collections that contain colonial/photosymbiotic corals
 corals <- corals %>%
-  filter(occurrence_no %in% occ_no)
-# Reduce to collections
-corals <- corals %>%
-  select(collection_no, max_ma, min_ma, lithology1, environment) %>%
-  distinct()
+  filter(collection_no %in% coll_no)
 
 # Time binning ----------------------------------------------------------
 # Bin corals
@@ -61,10 +70,17 @@ corals <- corals %>%
   left_join(x = ., y = bins, by = c("bin_assignment" = "bin"))
 
 # Get summary -----------------------------------------------------------
+# Collections
 counts <- corals %>%
   group_by(interval_name, photic) %>%
   count() %>%
   left_join(x = ., y = bins, by = "interval_name")
+# Genus
+genus_counts <- corals %>%
+  group_by(interval_name, photic) %>%
+  summarise(genus_counts = length(unique(genus))) %>%
+  left_join(x = ., y = bins, by = "interval_name")
 
 # Save data -------------------------------------------------------------
 write.csv(counts, "data/collection_counts.csv", row.names = FALSE)
+write.csv(genus_counts, "data/genus_counts.csv", row.names = FALSE)
