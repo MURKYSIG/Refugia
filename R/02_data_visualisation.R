@@ -24,6 +24,8 @@ coll <- read.csv("data/collection_counts.csv")
 genus <- read.csv("data/genus_counts.csv")
 
 # Setup plot data -------------------------------------------------------
+# Define xlim for plotting
+xlim <- c(485.4000, 2.5800)
 # Define events for plotting
 events <- data.frame(time = c(443.07, 359.3, 251.9, 201.36, 184.2, 56),
                      text = c("LOME", "D/C", "P/T", "T/J", "TOAE", "PETM"),
@@ -59,7 +61,7 @@ reef_counts <- ggplot() +
              vjust = 1.5,
              fill = "white", size = 2.75) +
   scale_fill_manual(values = cols) +
-  scale_x_reverse(limits = c(485.4000, 0)) +
+  scale_x_reverse(limits = xlim) +
   ylab("Number of reef sites") + 
   xlab("Time (Ma)") +
   theme_bw() +
@@ -79,7 +81,7 @@ reef_prop <- ggplot() +
            position = "fill", stat = "identity", colour = "black", 
            width = reef$duration_myr, linewidth = 0.25) +
   scale_fill_manual(values = cols) +
-  scale_x_reverse(limits = c(max(periods$max_age), 0)) +
+  scale_x_reverse(limits = xlim) +
   ylab("Proportion of reef sites") + 
   xlab("Time (Ma)") +
   theme_bw() +
@@ -105,7 +107,7 @@ coll_counts <- ggplot() +
              vjust = 1.5,
              fill = "white", size = 2.75) +
   scale_fill_manual(values = cols) +
-  scale_x_reverse(limits = c(485.4000, 0)) +
+  scale_x_reverse(limits = xlim) +
   ylab("Number of collections") + 
   xlab("Time (Ma)") +
   theme_bw() +
@@ -125,7 +127,7 @@ coll_prop <- ggplot() +
            position = "fill", stat = "identity", colour = "black", 
            width = coll$duration_myr, linewidth = 0.25) +
   scale_fill_manual(values = cols) +
-  scale_x_reverse(limits = c(max(periods$max_age), 0)) +
+  scale_x_reverse(limits = xlim) +
   ylab("Proportion of collections") + 
   xlab("Time (Ma)") +
   theme_bw() +
@@ -150,7 +152,7 @@ div <- ggplot() +
              vjust = 1.5,
              fill = "white", size = 2.75) +
   scale_fill_manual(values = cols) +
-  scale_x_reverse(limits = c(485.4000, 0)) +
+  scale_x_reverse(limits = xlim) +
   ylab("Number of genera") + 
   xlab("Time (Ma)") +
   theme_bw() +
