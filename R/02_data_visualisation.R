@@ -27,9 +27,10 @@ genus <- read.csv("data/genus_counts.csv")
 # Define xlim for plotting
 xlim <- c(485.4000, 2.5800)
 # Define events for plotting
-events <- data.frame(time = c(443.07, 359.3, 251.9, 201.36, 184.2, 56),
-                     text = c("LOME", "D/C", "P/T", "T/J", "TOAE", "PETM"),
-                     text_pos = c(443.07, 359.3, 251.9, 206.36, 179.2, 56))
+events <- data.frame(time = c(443.07, 359.3, 251.9, 201.36, 184.2, 121, 94, 66, 56),
+                     text = c("LOME", "D/C", "P/T", "T/J", "TOAE", "OAE1a", 
+                              "OAE2", "End-Cretaceous", "PETM"),
+                     text_pos = c(443.07, 359.3, 251.9, 206.36, 179.2, 121, 94, 66, 56))
 # Define colours
 cols <- c("#e59c2d", "#aad3cb", "#1a95b4", "#bcbddc")
 # Set levels
@@ -57,9 +58,9 @@ reef_counts <- ggplot() +
   geom_bar(data = reef, aes(x = mid_ma, y = n, fill = photic),
            position = "stack", stat = "identity", colour = "black", 
            width = reef$duration_myr, linewidth = 0.25) +
-  geom_label(data = events, aes(x = text_pos, y = Inf, label = text), 
-             vjust = 1.5,
-             fill = "white", size = 2.75) +
+  geom_label(data = events, aes(x = time, y = Inf, label = text), 
+             vjust = 0.5, hjust = -0.5,
+             fill = "white", size = 2, angle = 270) +
   scale_fill_manual(values = cols) +
   scale_x_reverse(limits = xlim) +
   ylab("Number of reef sites") + 
@@ -103,9 +104,9 @@ coll_counts <- ggplot() +
   geom_bar(data = coll, aes(x = mid_ma, y = n, fill = photic),
            position = "stack", stat = "identity", colour = "black", 
            width = coll$duration_myr, linewidth = 0.25) +
-  geom_label(data = events, aes(x = text_pos, y = Inf, label = text), 
-             vjust = 1.5,
-             fill = "white", size = 2.75) +
+  geom_label(data = events, aes(x = time, y = Inf, label = text), 
+             vjust = 0.5, hjust = -0.5,
+             fill = "white", size = 2, angle = 270) +
   scale_fill_manual(values = cols) +
   scale_x_reverse(limits = xlim) +
   ylab("Number of collections") + 
@@ -148,9 +149,9 @@ div <- ggplot() +
   geom_bar(data = genus, aes(x = mid_ma, y = genus_counts, fill = photic),
            position = "stack", stat = "identity", colour = "black", 
            width = coll$duration_myr, linewidth = 0.25) +
-  geom_label(data = events, aes(x = text_pos, y = Inf, label = text), 
-             vjust = 1.5,
-             fill = "white", size = 2.75) +
+  geom_label(data = events, aes(x = time, y = Inf, label = text), 
+             vjust = 0.5, hjust = -0.5,
+             fill = "white", size = 2, angle = 270) +
   scale_fill_manual(values = cols) +
   scale_x_reverse(limits = xlim) +
   ylab("Number of genera") + 
