@@ -1,9 +1,9 @@
 # Header ----------------------------------------------------------------
 # Project: Refugia
 # File name: 01a_data_preparation_reefs.R
-# Last updated: 2025-04-04
-# Author: Danijela Dimitrijevic; Lewis A. Jones
-# Email: danijela.dimitrijevic@fau.de; LewisA.Jones@outlook.com
+# Last updated: 2025-05-22
+# Author: Lewis A. Jones; Danijela Dimitrijevic
+# Email: LewisA.Jones@outlook.com; danijela.dimitrijevic@fau.de
 # Repository: https://github.com/MURKYSIG/Refugia
 
 # Load libraries --------------------------------------------------------
