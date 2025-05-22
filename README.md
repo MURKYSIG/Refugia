@@ -7,13 +7,9 @@ This repository contains the data and code required to run the analyses of the a
 To cite this paper:
 > TBC
 
--------
-
 ## Study details
 
 Contemporary climate change is driving more frequent, intense, and prolonged marine heatwaves, resulting in mass bleaching and mortality of coral communities within the euphotic zone. In contrast, mesophotic coral communities—both brown (turbid, low-light shallow-water) and blue (low-light deep-water)—seem to fare better during marine heatwaves. This observation has led to the proposal that mesophotic environments could serve as potential long-term refugia for coral communities amid ongoing global warming. Nevertheless, research on mesophotic coral ecosystems (MCE) is still in its infancy, and many questions remain unresolved. This Perspective highlights the potential, and indeed urgency, of integrating palaeontological data to address many of these questions. Specifically, we examine the potential for mesophotic environments to provide long-term refugia for coral communities during past climatic crises by: (1) defining the different types of mesophotic environments that exist, and providing examples of modern and fossil mesophotic coral ecosystems; (2) highlighting what lessons can be learnt from studying fossil mesophotic coral ecosystems and how this information can be leveraged to support conservation efforts; (3) discussing what lines of evidence are needed to identify mesophotic reef ecosystems in the fossil record; and (4) outlining future research priorities to assist these efforts. Through this contribution, we hope to further bridge the gap between neontological and palaeontological research on MCEs to support their long-term conservation.
-
--------
 
 ## Repository structure
 
@@ -23,8 +19,6 @@ In this repository, files and code are organised as:
 * **Analysis** code in the `R/` folder
 * **Results** in the `results/` folder
 * **Figures** in the `figures/` folder
-
--------
 
 ## Workflow
 
