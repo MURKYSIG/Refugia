@@ -53,11 +53,11 @@ reef_counts <- ggplot() +
   geom_rect(data = periods, 
             aes(xmin = max_age, xmax = min_age, ymin = -Inf, ymax = Inf),
             fill = rep(c("grey95", "white"), length.out = nrow(periods))) +
-  geom_vline(data = events, aes(xintercept = time), 
-             linetype = 2, colour = "grey80") +
   geom_bar(data = reef, aes(x = mid_ma, y = n, fill = photic),
            position = "stack", stat = "identity", colour = "black", 
            width = reef$duration_myr, linewidth = 0.25) +
+  geom_vline(data = events, aes(xintercept = time), 
+             linetype = 1, colour = "red") +
   geom_label(data = events, aes(x = time, y = Inf, label = text), 
              vjust = 0.5, hjust = -0.5,
              fill = "white", size = 2, angle = 270) +
@@ -76,11 +76,11 @@ reef_prop <- ggplot() +
   geom_rect(data = periods, 
             aes(xmin = max_age, xmax = min_age, ymin = -Inf, ymax = Inf),
             fill = rep(c("grey95", "white"), length.out = nrow(periods))) +
-  geom_vline(data = events, aes(xintercept = time), 
-             linetype = 2, colour = "grey80") +
   geom_bar(data = reef, aes(x = mid_ma, y = n, fill = photic),
            position = "fill", stat = "identity", colour = "black", 
            width = reef$duration_myr, linewidth = 0.25) +
+  geom_vline(data = events, aes(xintercept = time), 
+             linetype = 1, colour = "red") +
   scale_fill_manual(values = cols) +
   scale_x_reverse(limits = xlim) +
   ylab("Proportion of reef sites") + 
@@ -99,11 +99,11 @@ coll_counts <- ggplot() +
   geom_rect(data = periods, 
             aes(xmin = max_age, xmax = min_age, ymin = -Inf, ymax = Inf),
             fill = rep(c("grey95", "white"), length.out = nrow(periods))) +
-  geom_vline(data = events, aes(xintercept = time), 
-             linetype = 2, colour = "grey80") +
   geom_bar(data = coll, aes(x = mid_ma, y = n, fill = photic),
            position = "stack", stat = "identity", colour = "black", 
            width = coll$duration_myr, linewidth = 0.25) +
+  geom_vline(data = events, aes(xintercept = time), 
+             linetype = 1, colour = "red") +
   geom_label(data = events, aes(x = time, y = Inf, label = text), 
              vjust = 0.5, hjust = -0.5,
              fill = "white", size = 2, angle = 270) +
@@ -122,11 +122,11 @@ coll_prop <- ggplot() +
   geom_rect(data = periods, 
             aes(xmin = max_age, xmax = min_age, ymin = -Inf, ymax = Inf),
             fill = rep(c("grey95", "white"), length.out = nrow(periods))) +
-  geom_vline(data = events, aes(xintercept = time), 
-             linetype = 2, colour = "grey80") +
   geom_bar(data = coll, aes(x = mid_ma, y = n, fill = photic),
            position = "fill", stat = "identity", colour = "black", 
            width = coll$duration_myr, linewidth = 0.25) +
+  geom_vline(data = events, aes(xintercept = time), 
+             linetype = 1, colour = "red") +
   scale_fill_manual(values = cols) +
   scale_x_reverse(limits = xlim) +
   ylab("Proportion of collections") + 
@@ -144,11 +144,11 @@ div <- ggplot() +
   geom_rect(data = periods, 
             aes(xmin = max_age, xmax = min_age, ymin = -Inf, ymax = Inf),
             fill = rep(c("grey95", "white"), length.out = nrow(periods))) +
-  geom_vline(data = events, aes(xintercept = time), 
-             linetype = 2, colour = "grey80") +
   geom_bar(data = genus, aes(x = mid_ma, y = genus_counts, fill = photic),
            position = "stack", stat = "identity", colour = "black", 
            width = coll$duration_myr, linewidth = 0.25) +
+  geom_vline(data = events, aes(xintercept = time), 
+             linetype = 1, colour = "red") +
   geom_label(data = events, aes(x = time, y = Inf, label = text), 
              vjust = 0.5, hjust = -0.5,
              fill = "white", size = 2, angle = 270) +
