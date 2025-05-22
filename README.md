@@ -1,6 +1,6 @@
 # The potential of mesophotic environments to provide refugia for coral communities during times of crises
 
-**Authors(s)**: Lewis A. Jones, Danijela Dimitrijević, Markus Aretz, Francesca R. Bosellini, Juan C. Braga, Clara Diaz, Elizabeth Dowding, Kenneth Johnson, Wolfgang Kiessling, Bernard Lathuilière, Anna Merkel, Kyle Morgan, Michele Morsilli, John M. Pandolfi, Mikołaj K. Zapalski1, and Nadia Santodomingo
+**Authors(s)**: Lewis A. Jones, Danijela Dimitrijević, Markus Aretz, Francesca R. Bosellini, Juan C. Braga, Clara Diaz, Elizabeth Dowding, Kenneth Johnson, Wolfgang Kiessling, Bernard Lathuilière, Anna Merkel, Kyle Morgan, Michele Morsilli, John M. Pandolfi, Mikołaj K. Zapalski, and Nadia Santodomingo
 
 This repository contains the data and code required to run the analyses of the article, "The potential of mesophotic environments to provide refugia for coral communities during times of crises" (Jones et al. 2025).
 
