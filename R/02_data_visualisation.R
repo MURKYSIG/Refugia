@@ -33,6 +33,7 @@ events <- data.frame(time = c(443.07, 359.3, 251.9, 201.36, 184.2, 121, 94, 66, 
                      text_pos = c(443.07, 359.3, 251.9, 206.36, 179.2, 121, 94, 66, 56))
 # Define colours
 cols <- c("#e59c2d", "#aad3cb", "#1a95b4", "#bcbddc")
+labels <- c("Brown mesophotic", "Euphotic", "Blue mesophotic", "Unknown")
 # Set levels
 reef$photic <- factor(x = reef$photic, levels = c("Brown mesophotic", 
                                                   "Euphotic", 
@@ -61,12 +62,13 @@ reef_counts <- ggplot() +
   geom_label(data = events, aes(x = time, y = Inf, label = text), 
              vjust = 0.5, hjust = -0.5,
              fill = "white", size = 2, angle = 270) +
-  scale_fill_manual(values = cols) +
+  scale_fill_manual(values = cols,
+                    labels = labels) +
   scale_x_reverse(limits = xlim) +
   ylab("Number of reef sites") + 
-  xlab("Time (Ma)") +
+  xlab("") +
   theme_bw() +
-  theme(legend.position = "bottom",
+  theme(legend.position = "none",
         legend.title = element_blank(),
         panel.grid = element_blank()) +
   coord_geo(height = unit(1.25, "line"), fill = "grey80", lab_color = "black")
@@ -81,7 +83,8 @@ reef_prop <- ggplot() +
            width = reef$duration_myr, linewidth = 0.25) +
   geom_vline(data = events, aes(xintercept = time), 
              linetype = 1, colour = "red") +
-  scale_fill_manual(values = cols) +
+  scale_fill_manual(values = cols,
+                    labels = labels) +
   scale_x_reverse(limits = xlim) +
   ylab("Proportion of reef sites") + 
   xlab("Time (Ma)") +
@@ -107,12 +110,13 @@ coll_counts <- ggplot() +
   geom_label(data = events, aes(x = time, y = Inf, label = text), 
              vjust = 0.5, hjust = -0.5,
              fill = "white", size = 2, angle = 270) +
-  scale_fill_manual(values = cols) +
+  scale_fill_manual(values = cols,
+                    labels = labels) +
   scale_x_reverse(limits = xlim) +
   ylab("Number of collections") + 
-  xlab("Time (Ma)") +
+  xlab("") +
   theme_bw() +
-  theme(legend.position = "bottom",
+  theme(legend.position = "none",
         legend.title = element_blank(),
         panel.grid = element_blank()) +
   coord_geo(height = unit(1.25, "line"), fill = "grey80", lab_color = "black")
@@ -127,7 +131,8 @@ coll_prop <- ggplot() +
            width = coll$duration_myr, linewidth = 0.25) +
   geom_vline(data = events, aes(xintercept = time), 
              linetype = 1, colour = "red") +
-  scale_fill_manual(values = cols) +
+  scale_fill_manual(values = cols,
+                    labels = labels) +
   scale_x_reverse(limits = xlim) +
   ylab("Proportion of collections") + 
   xlab("Time (Ma)") +
@@ -152,7 +157,8 @@ div <- ggplot() +
   geom_label(data = events, aes(x = time, y = Inf, label = text), 
              vjust = 0.5, hjust = -0.5,
              fill = "white", size = 2, angle = 270) +
-  scale_fill_manual(values = cols) +
+  scale_fill_manual(values = cols,
+                    labels = labels) +
   scale_x_reverse(limits = xlim) +
   ylab("Number of genera") + 
   xlab("Time (Ma)") +
@@ -163,16 +169,25 @@ div <- ggplot() +
   coord_geo(height = unit(1.25, "line"), fill = "grey80", lab_color = "black")
 
 # Arrange plots ---------------------------------------------------------
-p1 <- ggarrange(reef_counts, reef_prop, labels = c("A", "C"),
-                nrow = 2, ncol = 1, align = "hv", legend = "none", 
-                common.legend = TRUE)
-p2 <- ggarrange(coll_counts, coll_prop, labels = c("B", "D"), 
-                nrow = 2, ncol = 1, align = "hv", legend = "none")
-# Plot
-p <- ggarrange(p1, p2)
-div <- ggarrange(div, labels = "E")
-p <- ggarrange(p, div, nrow = 2, align = "hv", heights = c(1.75, 1.25))
-p
+# p1 <- ggarrange(reef_counts, reef_prop, labels = c("A", "C"),
+#                 nrow = 2, ncol = 1, align = "hv", legend = "none", 
+#                 common.legend = TRUE)
+# p2 <- ggarrange(coll_counts, coll_prop, labels = c("B", "D"), 
+#                 nrow = 2, ncol = 1, align = "hv", legend = "none")
+# # Plot
+# p <- ggarrange(p1, p2)
+# div <- ggarrange(div, labels = "E")
+# p <- ggarrange(p, div, nrow = 2, align = "hv", heights = c(1.75, 1.25))
+# p
+# p1 <- ggarrange(reef_counts, labels = "A", legend = "none", common.legend = TRUE)
+# p2 <- ggarrange(coll_counts, labels = "B", legend = "none", common.legend = TRUE)
+# p3 <- ggarrange(div, labels = "C", common.legend = FALSE)
+# p <- ggarrange(p1, p2, p3, ncol = 1, nrow = 3, heights = c(1, 1, 1), align = "hv")
+# p
+
+p <- ggarrange(reef_counts, coll_counts, div, labels = "AUTO", ncol = 1, align = "hv",
+               legend = "bottom",
+               legend.grob = get_legend(div))
 # Save
 ggsave("figures/counts.png", plot = p, 
-       dpi = 300, width = 300, height = 300, units = "mm", bg = "white")
+       dpi = 300, width = 210, height = 297, units = "mm", bg = "white")
