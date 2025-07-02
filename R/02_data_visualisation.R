@@ -27,10 +27,10 @@ genus <- read.csv("data/genus_counts.csv")
 # Define xlim for plotting
 xlim <- c(485.4000, 2.5800)
 # Define events for plotting
-events <- data.frame(time = c(443.07, 359.3, 251.9, 201.36, 184.2, 121, 94, 66, 56),
-                     text = c("LOME", "D/C", "P/T", "T/J", "TOAE", "OAE1a", 
+events <- data.frame(time = c(443.07, 359.3, 260, 251.9, 201.36, 184.2, 121, 94, 66, 56),
+                     text = c("LOME", "F/F", "G/L", "P/T", "T/J", "TOAE", "OAE1a", 
                               "OAE2", "K/Pg", "PETM"),
-                     text_pos = c(443.07, 359.3, 251.9, 206.36, 179.2, 121, 94, 66, 56))
+                     text_pos = c(443.07, 359.3, 260, 251.9, 206.36, 179.2, 121, 94, 66, 56))
 # Define colours
 cols <- c("#e59c2d", "#aad3cb", "#1a95b4", "#bcbddc")
 labels <- c("Brown mesophotic", "Euphotic", "Blue mesophotic", "Unknown")
