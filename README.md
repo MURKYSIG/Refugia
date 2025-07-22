@@ -1,15 +1,15 @@
-# The potential of mesophotic environments to provide refugia for coral communities during times of crises
+# Mesophotic refugia for reef corals under past climatic changes
 
 **Authors(s)**: Lewis A. Jones, Danijela Dimitrijević, Markus Aretz, Francesca R. Bosellini, Juan C. Braga, Clara Diaz, Elizabeth Dowding, Kenneth Johnson, Wolfgang Kiessling, Bernard Lathuilière, Anna Merkel, Kyle Morgan, Michele Morsilli, John M. Pandolfi, Mikołaj K. Zapalski, and Nadia Santodomingo
 
-This repository contains the data and code required to run the analyses of the article, "The potential of mesophotic environments to provide refugia for coral communities during times of crises" (Jones et al. 2025).
+This repository contains the data and code required to run the analyses of the article, 'Mesophotic refugia for reef corals under past climatic changes' (Jones et al. 2025).
 
 To cite this paper:
 > TBC
 
-## Study details
+## Abstract
 
-Contemporary climate change is driving more frequent, intense, and prolonged marine heatwaves, resulting in mass bleaching and mortality of coral communities within the euphotic zone. In contrast, mesophotic coral communities—both brown (turbid, low-light shallow-water) and blue (low-light deep-water)—seem to fare better during marine heatwaves. This observation has led to the proposal that mesophotic environments could serve as potential long-term refugia for coral communities amid ongoing global warming. Nevertheless, research on mesophotic coral ecosystems (MCE) is still in its infancy, and many questions remain unresolved. This Perspective highlights the potential, and indeed urgency, of integrating palaeontological data to address many of these questions. Specifically, we examine the potential for mesophotic environments to provide long-term refugia for coral communities during past climatic crises by: (1) defining the different types of mesophotic environments that exist, and providing examples of modern and fossil mesophotic coral ecosystems; (2) highlighting what lessons can be learnt from studying fossil mesophotic coral ecosystems and how this information can be leveraged to support conservation efforts; (3) discussing what lines of evidence are needed to identify mesophotic reef ecosystems in the fossil record; and (4) outlining future research priorities to assist these efforts. Through this contribution, we hope to further bridge the gap between neontological and palaeontological research on MCEs to support their long-term conservation.
+Increasingly frequent and intense marine heatwaves are driving widespread coral mortality within the euphotic zone. In contrast, mesophotic coral ecosystems (MCEs)—spanning turbid, low-light shallow reefs (‘brown’ MCEs) and clear, low-light deeper reefs (‘blue’ MCEs)—often show greater resilience, leading to the hypothesis that they may serve as refugia under accelerating climate change. Yet whether MCEs can offer long-term refuge remains unclear, in part due to limited research. Here, we argue for the urgent integration of palaeontological data to address this knowledge gap. By bridging neontological and palaeontological perspectives, we aim to improve understanding of MCEs’ capacity to buffer coral biodiversity and inform conservation strategies in a warming ocean.
 
 ## Repository structure
 
